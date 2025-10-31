@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/index.css'
+import Navigation from '../components/Navigation.astro';
+import { Image } from 'astro:assets';
+import instagramImg from '../assets/instagram.png';
+import twitterImg from '../assets/twitter.png';
+import messageImg from '../assets/message.png';
+---
+
+<Layout title="Home - Pollution Free India">
+  <Fragment slot="navigation">
+    <Navigation />
+  </Fragment>
+  
+  <div class="home-content">
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Together for a <span class="highlight">Cleaner India</span></h1>
+        <p class="quote">We don't need one person who prevents pollution perfectly. We need many people who are trying to prevent pollution.</p>
+        
+        <div class="cta-buttons">
+          <a href="/about" class="cta-btn primary">Join Our Mission</a>
+          <a href="/donate" class="cta-btn secondary">Support Cause</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="social-section">
+      <h2 class="social-title">Connect With Us</h2>
+      <p class="social-subtitle">Follow our journey and join the conversation</p>
+      
+      <div class="social-links">
+        <a href="https://www.instagram.com/pollutionfreeindia.official/" 
+           class="social-card" 
+           aria-label="Follow us on Instagram">
+          <div class="social-icon-wrapper">
+            <Image 
+              src={instagramImg} 
+              alt="Instagram" 
+              height={65}
+              format="webp"
+              class="social-icon"
+            />
+          </div>
+          <span class="social-name">Instagram</span>
+          <span class="social-handle">@pollutionfreeindia</span>
+        </a>
+        
+        <a href="https://twitter.com/pollutionfreei4" 
+           class="social-card" 
+           aria-label="Follow us on Twitter">
+          <div class="social-icon-wrapper">
+            <Image 
+              src={twitterImg} 
+              alt="Twitter" 
+              height={65}
+              format="webp"
+              class="social-icon"
+            />
+          </div>
+          <span class="social-name">Twitter</span>
+          <span class="social-handle">@pollutionfreei4</span>
+        </a>
+        
+        <a href="/chat" 
+           class="social-card" 
+           aria-label="Chat with us">
+          <div class="social-icon-wrapper">
+            <Image 
+              src={messageImg} 
+              alt="Message" 
+              height={65}
+              format="webp"
+              class="social-icon"
+            />
+          </div>
+          <span class="social-name">Live Chat</span>
+          <span class="social-handle">Get in touch</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

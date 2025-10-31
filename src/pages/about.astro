@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import '../styles/about.css';
+import Navigation from '../components/Navigation.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Pollution Free India</title>
+</head>
+<body>
+
+    <Fragment slot="navigation">
+      <Navigation />
+    </Fragment>
+
+    <section class="mission-section">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="mission-content">
+                <div class="mission-text">
+                    <p>
+                        Pollution Free India is an organization founded by optimistic young minds determined to create a clean and sustainable world. We focus on reducing pollution through awareness campaigns and community engagement, inviting everyone to join our mission for a healthier planet.
+                    </p>
+                    <p>
+                        Our vision extends beyond temporary solutions - we're working toward completely preventing pollution worldwide. We believe that collective small actions create monumental change, and that every individual has the power to contribute to a pollution-free future.
+                    </p>
+                    <p>
+                        Through education, community action, and innovative solutions, we're building a movement that transcends borders and generations. Our approach combines grassroots activism with digital outreach to maximize our impact across India and beyond.
+                    </p>
+                </div>
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team of volunteers cleaning up a park">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Sustainability</h3>
+                    <p>We promote long-term solutions that balance ecological health with human needs, ensuring a livable planet for future generations.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Community</h3>
+                    <p>We believe in the power of collective action and work to build inclusive communities where everyone can contribute to change.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Innovation</h3>
+                    <p>We embrace creative approaches and technologies to address pollution challenges in effective and scalable ways.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Global Vision</h3>
+                    <p>While starting in India, our mission recognizes that pollution knows no borders and requires worldwide cooperation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const missionSection = document.querySelector('.mission-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            missionSection.style.opacity = '0';
+            missionSection.style.transform = 'translateY(20px)';
+            missionSection.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            
+            observer.observe(missionSection);
+        });
+    </script>
+</body>
+</html>

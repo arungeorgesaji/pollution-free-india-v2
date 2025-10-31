@@ -1,0 +1,219 @@
+.home-content {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.hero {
+  background: linear-gradient(135deg, 
+    rgba(30, 60, 114, 0.9) 0%, 
+    rgba(42, 82, 152, 0.8) 100%),
+    url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.quote {
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.cta-btn.primary {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: white;
+  border-color: white;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn.primary:hover {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+}
+
+.cta-btn.secondary:hover {
+  background: white;
+  color: #1e3c72;
+}
+
+/* Social Section */
+.social-section {
+  padding: 5rem 2rem;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.social-title {
+  font-size: 2.5rem;
+  color: #1e3c72;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.social-subtitle {
+  font-size: 1.2rem;
+  color: #64748b;
+  margin-bottom: 3rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.social-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #334155;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(30, 60, 114, 0.15);
+  border-color: #4facfe;
+}
+
+.social-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-card:hover .social-icon-wrapper {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  transform: scale(1.1);
+}
+
+.social-icon {
+  transition: all 0.3s ease;
+}
+
+.social-card:hover .social-icon {
+  filter: brightness(0) invert(1);
+}
+
+.social-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e3c72;
+}
+
+.social-handle {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .quote {
+    font-size: 1.4rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .social-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .quote {
+    font-size: 1.2rem;
+  }
+
+  .social-title {
+    font-size: 2rem;
+  }
+}

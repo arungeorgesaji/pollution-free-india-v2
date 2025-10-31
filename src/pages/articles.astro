@@ -1,0 +1,332 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/articles.css';
+import Navigation from '../components/Navigation.astro';
+import { Image } from 'astro:assets';
+
+import pollBackImg from '../assets/poll_back.jpg';
+import wikiImg from '../assets/wiki.JPG';
+import pollBack3Img from '../assets/poll_back3.webp';
+import britImg from '../assets/brit.webp';
+import byjuImg from '../assets/byju.png';
+import bookImg from '../assets/book.jpg';
+import pregImg from '../assets/preg.jpg';
+import air5Img from '../assets/air5.jpg';
+---
+
+<Layout title="Articles - Pollution Free India">
+  <Fragment slot="navigation">
+    <Navigation />
+  </Fragment>
+
+  <div class="articles-container">
+    <section class="articles-grid-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Resources</h2>
+          <p class="section-subtitle">Curated content from trusted sources worldwide</p>
+        </div>
+
+        <div class="articles-grid">
+          <article class="article-card">
+            <div class="article-image">
+              <Image 
+                src={pollBackImg} 
+                alt="Global Pollution Overview" 
+                width={400}
+                height={250}
+                format="webp"
+                class="article-img"
+              />
+              <div class="article-category">Global Overview</div>
+            </div>
+            <div class="article-content">
+              <h3 class="article-title">
+                <a href="https://education.nationalgeographic.org/resource/pollution" class="article-link">
+                  Comprehensive Guide to Global Pollution
+                </a>
+              </h3>
+              <p class="article-description">
+                In-depth analysis of pollution types and their worldwide impact from National Geographic
+              </p>
+              <div class="article-meta">
+                <span class="source">National Geographic</span>
+                <span class="read-time">15 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-image">
+              <Image 
+                src={wikiImg} 
+                alt="Pollution Encyclopedia" 
+                width={400}
+                height={250}
+                format="webp"
+                class="article-img"
+              />
+              <div class="article-category">Encyclopedia</div>
+            </div>
+            <div class="article-content">
+              <h3 class="article-title">
+                <a href="https://en.wikipedia.org/wiki/Pollution" class="article-link">
+                  Pollution Encyclopedia & Definitions
+                </a>
+              </h3>
+              <p class="article-description">
+                Comprehensive definitions, types, and scientific background on environmental pollution
+              </p>
+              <div class="article-meta">
+                <span class="source">Wikipedia</span>
+                <span class="read-time">20 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-image">
+              <Image 
+                src={pollBack3Img} 
+                alt="World Bank Programs" 
+                width={400}
+                height={250}
+                format="webp"
+                class="article-img"
+              />
+              <div class="article-category">Global Initiatives</div>
+            </div>
+            <div class="article-content">
+              <h3 class="article-title">
+                <a href="https://www.worldbank.org/en/topic/pollution#1" class="article-link">
+                  International Pollution Relief Programs
+                </a>
+              </h3>
+              <p class="article-description">
+                World Bank initiatives helping nations combat environmental degradation
+              </p>
+              <div class="article-meta">
+                <span class="source">World Bank</span>
+                <span class="read-time">12 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-image">
+              <Image 
+                src={britImg} 
+                alt="Scientific Pollution Analysis" 
+                width={400}
+                height={250}
+                format="webp"
+                class="article-img"
+              />
+              <div class="article-category">Scientific Research</div>
+            </div>
+            <div class="article-content">
+              <h3 class="article-title">
+                <a href="https://www.britannica.com/science/pollution-environment" class="article-link">
+                  Scientific Analysis of Environmental Pollution
+                </a>
+              </h3>
+              <p class="article-description">
+                Detailed scientific breakdown of pollution causes, effects, and solutions
+              </p>
+              <div class="article-meta">
+                <span class="source">Britannica</span>
+                <span class="read-time">18 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-image">
+              <Image 
+                src={byjuImg} 
+                alt="Pollution for Children" 
+                width={400}
+                height={250}
+                format="webp"
+                class="article-img"
+              />
+              <div class="article-category">Education</div>
+            </div>
+            <div class="article-content">
+              <h3 class="article-title">
+                <a href="https://byjus.com/biology/types-of-pollution/" class="article-link">
+                  Pollution Explained for Young Learners
+                </a>
+              </h3>
+              <p class="article-description">
+                Child-friendly explanations and interactive content about different pollution types
+              </p>
+              <div class="article-meta">
+                <span class="source">BYJU'S</span>
+                <span class="read-time">8 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-image">
+              <Image 
+                src={bookImg} 
+                alt="Environmental Pollution Journal" 
+                width={400}
+                height={250}
+                format="webp"
+                class="article-img"
+              />
+              <div class="article-category">Academic Research</div>
+            </div>
+            <div class="article-content">
+              <h3 class="article-title">
+                <a href="https://www.sciencedirect.com/journal/environmental-pollution" class="article-link">
+                  Environmental Pollution Research Journal
+                </a>
+              </h3>
+              <p class="article-description">
+                Peer-reviewed research papers and studies on environmental pollution
+              </p>
+              <div class="article-meta">
+                <span class="source">ScienceDirect</span>
+                <span class="read-time">25 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-image">
+              <Image 
+                src={pregImg} 
+                alt="Air Pollution Health Impact" 
+                width={400}
+                height={250}
+                format="webp"
+                class="article-img"
+              />
+              <div class="article-category">Health & Wellness</div>
+            </div>
+            <div class="article-content">
+              <h3 class="article-title">
+                <a href="https://www.niehs.nih.gov/health/topics/agents/air-pollution/index.cfm" class="article-link">
+                  Air Pollution & Public Health Impacts
+                </a>
+              </h3>
+              <p class="article-description">
+                Research on how air pollution affects human health and well-being
+              </p>
+              <div class="article-meta">
+                <span class="source">NIH</span>
+                <span class="read-time">15 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-image">
+              <Image 
+                src={air5Img} 
+                alt="Air Pollution Data" 
+                width={400}
+                height={250}
+                format="webp"
+                class="article-img"
+              />
+              <div class="article-category">Data & Statistics</div>
+            </div>
+            <div class="article-content">
+              <h3 class="article-title">
+                <a href="https://ourworldindata.org/air-pollution" class="article-link">
+                  Global Air Pollution Data Analysis
+                </a>
+              </h3>
+              <p class="article-description">
+                Comprehensive data visualization and analysis of worldwide air pollution trends
+              </p>
+              <div class="article-meta">
+                <span class="source">Our World in Data</span>
+                <span class="read-time">10 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2>Stay Informed</h2>
+          <p>Get the latest articles and research on environmental protection delivered to your inbox</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Enter your email address" class="newsletter-input" id="newsletter-email" required>
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
+          <div id="newsletter-message" class="newsletter-message"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterMessage = document.getElementById('newsletter-message');
+    
+    newsletterForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const emailInput = document.getElementById('newsletter-email');
+      const email = emailInput.value.trim();
+      
+      if (!email) {
+        showMessage('Please enter your email address', 'error');
+        return;
+      }
+      
+      if (!isValidEmail(email)) {
+        showMessage('Please enter a valid email address', 'error');
+        return;
+      }
+      
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email })
+        });
+        
+        if (response.ok) {
+          showMessage('Thank you for subscribing! You will receive updates on environmental protection.', 'success');
+          emailInput.value = '';
+        } else {
+          const data = await response.json();
+          showMessage(data.error || 'Subscription failed. Please try again.', 'error');
+        }
+      } catch (error) {
+        console.error('Subscription error:', error);
+        showMessage('Network error. Please try again.', 'error');
+      }
+    });
+    
+    function showMessage(message, type) {
+      newsletterMessage.textContent = message;
+      newsletterMessage.className = `newsletter-message ${type}`;
+      newsletterMessage.style.display = 'block';
+      
+      setTimeout(() => {
+        newsletterMessage.style.display = 'none';
+      }, 5000);
+    }
+    
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  });
+</script>

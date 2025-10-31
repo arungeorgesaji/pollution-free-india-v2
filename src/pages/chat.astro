@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import '../styles/chat.css';
+---
+
+<Layout title="Community Chat - Pollution Free India">
+  <Fragment slot="navigation">
+    <Navigation />
+  </Fragment>
+
+  <div class="chat-container">
+    <section class="chat-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Community Chat</h1>
+        <p class="hero-subtitle">Discuss pollution issues and share solutions with the community</p>
+      </div>
+    </section>
+
+    <section class="chat-section">
+      <div class="container">
+        <div id="user-setup" class="user-setup">
+          <h3>Join the Conversation</h3>
+          <p>Enter your username to start chatting</p>
+          <div class="setup-form">
+            <input type="text" id="username-input" placeholder="Enter your username" maxlength="20" />
+            <button type="button" id="join-btn">Join Chat</button>
+          </div>
+        </div>
+
+        <div id="chat-interface" class="chat-interface" style="display: none;">
+          <div class="chat-header">
+            <h3>Community Chat</h3>
+            <div class="user-info">
+              <span id="current-user">User</span>
+              <button type="button" id="leave-btn">Leave</button>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chat-messages">
+          </div>
+
+          <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type your message..." maxlength="500" />
+            <button type="button" id="send-btn">Send</button>
+          </div>
+        </div>
+
+        <div class="chat-rules">
+          <h4>Community Guidelines</h4>
+          <ul>
+            <li>Be respectful and constructive</li>
+            <li>Share pollution-related information</li>
+            <li>Help others with solutions</li>
+            <li>No spam or off-topic messages</li>
+            <li>No personal attacks</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<script>
+  let currentUsername = '';
+  let messageInterval = null;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('join-btn')?.addEventListener('click', joinChat);
+    document.getElementById('leave-btn')?.addEventListener('click', leaveChat);
+    document.getElementById('send-btn')?.addEventListener('click', sendMessage);
+    
+    document.getElementById('username-input')?.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        joinChat();
+      }
+    });
+    
+    document.getElementById('message-input')?.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    const savedUsername = localStorage.getItem('chatUsername');
+    if (savedUsername) {
+      joinChat(savedUsername);
+    }
+  });
+
+  async function joinChat() {
+    const usernameInput = document.getElementById('username-input');
+    const userSetup = document.getElementById('user-setup');
+    const chatInterface = document.getElementById('chat-interface');
+    const currentUserSpan = document.getElementById('current-user');
+    
+    let finalUsername = currentUsername;
+    
+    if (!finalUsername) {
+      finalUsername = usernameInput.value.trim();
+      if (!finalUsername) {
+        alert('Please enter a username');
+        return;
+      }
+    }
+    
+    currentUsername = finalUsername;
+    
+    localStorage.setItem('chatUsername', finalUsername);
+    
+    userSetup.style.display = 'none';
+    chatInterface.style.display = 'block';
+    currentUserSpan.textContent = finalUsername;
+    
+    await loadMessages();
+    startMessagePolling();
+    
+    document.getElementById('message-input').focus();
+  }
+
+  function leaveChat() {
+    localStorage.removeItem('chatUsername');
+    stopMessagePolling();
+    location.reload();
+  }
+
+  async function sendMessage() {
+    console.log('Send button clicked'); 
+    const messageInput = document.getElementById('message-input');
+    const message = messageInput.value.trim();
+    
+    if (!message) return;
+    
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: currentUsername,
+          message: message
+        })
+      });
+
+      if (response.ok) {
+        messageInput.value = '';
+        await loadMessages(); 
+      } else {
+        alert('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Error sending message');
+    }
+  }
+
+  async function loadMessages() {
+    try {
+      const response = await fetch('/api/messages');
+      const messages = await response.json();
+      
+      const messagesContainer = document.getElementById('chat-messages');
+      messagesContainer.innerHTML = '';
+      
+      if (messages.length === 0) {
+        messagesContainer.innerHTML = '<div class="no-messages">No messages yet. Start the conversation!</div>';
+        return;
+      }
+      
+      messages.forEach(msg => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${msg.username === currentUsername ? 'own-message' : 'other-message'}`;
+        
+        messageDiv.innerHTML = `
+          <div class="message-header">
+            <strong>${escapeHtml(msg.username)}</strong>
+            <span class="timestamp">${formatTime(msg.timestamp)}</span>
+          </div>
+          <div class="message-content">${escapeHtml(msg.message)}</div>
+        `;
+        
+        messagesContainer.appendChild(messageDiv);
+      });
+      
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    } catch (error) {
+      console.error('Error loading messages:', error);
+    }
+  }
+
+  function startMessagePolling() {
+    messageInterval = setInterval(loadMessages, 3000);
+  }
+
+  function stopMessagePolling() {
+    if (messageInterval) {
+      clearInterval(messageInterval);
+      messageInterval = null;
+    }
+  }
+
+  function formatTime(timestamp) {
+    return new Date(timestamp).toLocaleTimeString();
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+</script>

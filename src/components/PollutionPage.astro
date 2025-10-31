@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+export interface Props {
+  pollutionType: string;
+}
+
+const { pollutionType } = Astro.props;
+
+import '../styles/PollutionPage.css'
+
+const pollutionPages = await getCollection('pollution');
+const currentPage = pollutionPages.find(page => page.data.pollutionType === pollutionType);
+
+if (!currentPage) {
+  throw new Error(`Pollution page for type '${pollutionType}' not found`);
+}
+
+const { Content } = await currentPage.render();
+
+let heroImageComponent = null;
+if (currentPage.data.heroImage) {
+  try {
+    const imagePath = currentPage.data.heroImage.replace('/images/', '../assets/');
+    const imageModule = await import(imagePath);
+    heroImageComponent = imageModule.default;
+  } catch (error) {
+    console.warn(`Could not load hero image: ${currentPage.data.heroImage}`);
+  }
+}
+---
+
+<div class="pollution-container">
+  <section 
+    class="pollution-hero" 
+    style={currentPage.data.backgroundImage ? 
+      `background-image: url('${currentPage.data.backgroundImage}')` : 
+      'background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)'
+    }
+  >
+    <div class="hero-overlay">
+      <br><br><br><br><br>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">{currentPage.data.title}</h1>
+          <p class="hero-description">{currentPage.data.description}</p>
+        </div>
+        
+        {heroImageComponent && (
+          <div class="hero-image">
+            <Image 
+              src={heroImageComponent} 
+              alt={currentPage.data.title}
+              height={250}
+              format="webp"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="pollution-content">
+    <div class="container">
+      <div class="content-wrapper">
+        <article class="pollution-article">
+          <Content />
+        </article>
+        
+        <aside class="pollution-sidebar">
+          
+          <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <a href="/contact" class="action-btn report">Report Issue</a>
+            <a href="/articles" class="action-btn learn">Learn More</a>
+            <a href="/donate" class="action-btn donate">Support Cause</a>
+          </div>
+          
+          {currentPage.data.tags && currentPage.data.tags.length > 0 && (
+            <div class="tags">
+              <h3>Related Tags</h3>
+              <div class="tag-list">
+                {currentPage.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>

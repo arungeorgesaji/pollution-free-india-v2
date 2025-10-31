@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/contact.css'
+import Navigation from '../components/Navigation.astro';
+---
+
+<Layout title="Contact Us - Pollution Free India">
+  <Fragment slot="navigation">
+    <Navigation />
+  </Fragment>
+
+  <div class="contact-container">
+    <section class="contact-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Your Voice Matters</h1>
+        <p class="hero-subtitle">Report Pollution Issues • Seek Help • Become a Sponsor</p>
+      </div>
+    </section>
+
+    <section class="contact-options">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">How Can We Help You?</h2>
+          <p class="section-subtitle">Choose the option that best fits your needs</p>
+        </div>
+
+        <div class="options-grid">
+          <div class="option-card">
+            <h3 class="option-title">Report Pollution Issues</h3>
+            <p class="option-description">
+              Report environmental problems in your area - air quality, water contamination, waste management, or any other pollution concerns.
+            </p>
+            <ul class="option-features">
+              <li>Quick response within 24 hours</li>
+              <li>Local authority coordination</li>
+              <li>Follow-up updates</li>
+              <li>Anonymous reporting available</li>
+            </ul>
+            <p>Phone Number: <strong>+91-7994800801</strong></p>
+            <p>Email: <strong>arungeorgesaji@gmail.com</strong></p>
+          </div>
+
+          <div class="option-card">
+            <h3 class="option-title">Public Community Chat</h3>
+            <p class="option-description">
+              Join public discussions, share information, and get answers to general questions about pollution prevention.
+            </p>
+            <ul class="option-features">
+              <li>Real-time discussions</li>
+              <li>Community knowledge sharing</li>
+              <li>Expert Q&A sessions</li>
+              <li>Public visibility</li>
+            </ul>
+            <a href="/chat" class="option-btn outline">Join Chat</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="emergency-contact">
+      <div class="container">
+        <div class="emergency-banner">
+          <div class="emergency-content">
+            <h3>Emergency Pollution Alert</h3>
+            <p>For immediate environmental hazards threatening public health or safety</p>
+            <div class="emergency-contacts">
+              <div class="emergency-item">
+                <span class="emergency-label">Emergency Hotline:</span>
+                <span class="emergency-value">1800-123-4567</span>
+              </div>
+              <div class="emergency-item">
+                <span class="emergency-label">WhatsApp Alert:</span>
+                <span class="emergency-value">+91-9876543210</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="additional-info">
+      <div class="container">
+        <div class="info-grid">
+          <div class="info-card">
+            <h4>Response Time</h4>
+            <p>We typically respond to reports within 24 hours and coordinate with local authorities for immediate action on critical issues.</p>
+          </div>
+          <div class="info-card">
+            <h4>Confidentiality</h4>
+            <p>Your personal information is protected. Anonymous reporting is available for sensitive situations.</p>
+          </div>
+          <div class="info-card">
+            <h4>Follow-up</h4>
+            <p>We provide regular updates on reported issues and the actions taken to resolve them.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

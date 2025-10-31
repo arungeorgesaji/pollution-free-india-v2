@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import PollutionPage from '../../components/PollutionPage.astro';
+---
+
+<Layout title="Light Pollution - Pollution Free India">
+  <Fragment slot="navigation">
+    <Navigation />
+  </Fragment>
+  
+  <PollutionPage pollutionType="light" />
+</Layout>
